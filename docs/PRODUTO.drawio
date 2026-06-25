@@ -1,0 +1,56 @@
+<mxfile host="app.diagrams.net" pages="2">
+  <diagram name="Pedido" id="CSg83vY-ITdStLiOevV6">
+    <mxGraphModel dx="2219" dy="686" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="AHhMp7x7PtNR02qb-INS-3" parent="1" style="whiteSpace=wrap;html=1;shadow=1;" value="&lt;i&gt;Produto&lt;/i&gt;" vertex="1">
+          <mxGeometry height="70" width="170" x="220" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="AHhMp7x7PtNR02qb-INS-4" parent="1" style="whiteSpace=wrap;html=1;align=left;shadow=1;" value="- codigo: String&lt;div style=&quot;&quot;&gt;- nome: String&lt;/div&gt;&lt;div&gt;- precoBase: double&lt;/div&gt;&lt;div&gt;- quantidadeestoque: int&lt;/div&gt;" vertex="1">
+          <mxGeometry height="80" width="170" x="220" y="490" as="geometry" />
+        </mxCell>
+        <mxCell id="AHhMp7x7PtNR02qb-INS-5" parent="1" style="whiteSpace=wrap;html=1;shadow=1;" value="&lt;div style=&quot;text-align: left;&quot;&gt;+ getPrecoBase(): double&lt;/div&gt;&lt;div&gt;+ getQuantidadeEstoque(): int&lt;/div&gt;&lt;div&gt;+ baixarEstoque(qtd: int): void&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="110" width="170" x="220" y="570" as="geometry" />
+        </mxCell>
+        <mxCell id="AHhMp7x7PtNR02qb-INS-16" edge="1" parent="1" source="AHhMp7x7PtNR02qb-INS-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;startArrow=none;startFill=0;endArrow=block;endFill=0;" target="AHhMp7x7PtNR02qb-INS-3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="490" y="455" />
+              <mxPoint x="490" y="455" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AHhMp7x7PtNR02qb-INS-10" parent="1" style="whiteSpace=wrap;html=1;shadow=1;" value="&lt;i&gt;Comida&lt;/i&gt;" vertex="1">
+          <mxGeometry height="70" width="170" x="580" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="AHhMp7x7PtNR02qb-INS-11" parent="1" style="whiteSpace=wrap;html=1;align=left;shadow=1;" value="- tempoPreparoMinutos: int&lt;div&gt;- isVegano: boolean&lt;/div&gt;&lt;div&gt;- isSemGluten: boolean&lt;/div&gt;" vertex="1">
+          <mxGeometry height="80" width="170" x="580" y="490" as="geometry" />
+        </mxCell>
+        <mxCell id="AHhMp7x7PtNR02qb-INS-12" parent="1" style="whiteSpace=wrap;html=1;shadow=1;" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="110" width="170" x="580" y="570" as="geometry" />
+        </mxCell>
+        <mxCell id="AHhMp7x7PtNR02qb-INS-20" edge="1" parent="1" source="AHhMp7x7PtNR02qb-INS-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=block;endFill=0;" target="AHhMp7x7PtNR02qb-INS-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="AHhMp7x7PtNR02qb-INS-13" parent="1" style="whiteSpace=wrap;html=1;shadow=1;" value="&lt;i&gt;Bebida&lt;/i&gt;" vertex="1">
+          <mxGeometry height="70" width="170" x="-160" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="AHhMp7x7PtNR02qb-INS-14" parent="1" style="whiteSpace=wrap;html=1;align=left;shadow=1;" value="- tamanho: String&lt;div&gt;- quantidadeCafeinaMg: double&lt;/div&gt;" vertex="1">
+          <mxGeometry height="80" width="170" x="-160" y="490" as="geometry" />
+        </mxCell>
+        <mxCell id="AHhMp7x7PtNR02qb-INS-15" parent="1" style="whiteSpace=wrap;html=1;shadow=1;" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="110" width="170" x="-160" y="570" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="eini-WpSjYqzutg81gqX" name="Página-2">
+    <mxGraphModel dx="705" dy="474" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

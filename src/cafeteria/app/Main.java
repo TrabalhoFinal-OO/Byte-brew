@@ -8,7 +8,7 @@ import cafeteria.modelo.ProdutoRepository;
 import cafeteria.modelo.Pedido;
 import cafeteria.modelo.ItemPedido;
 import cafeteria.modelo.Cliente;
-import cafeteria.modelo.ClienteVip;
+import cafeteria.modelo.ClienteVIP;
 import cafeteria.modelo.ClienteStandard;
 
 public class Main {

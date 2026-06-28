@@ -1,0 +1,9 @@
+# Ignorar arquivos compilados do Java
+*.class
+
+# Ignorar a pasta de binários do Eclipse (onde ficam os .class)
+bin/
+
+# Opcional: Ignorar arquivos de configuração local do Eclipse 
+.settings/
+.mega

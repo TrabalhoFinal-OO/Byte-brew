@@ -64,4 +64,13 @@ public class Cardapio {
         
         System.out.println("================================================");
     }
+    
+    public Produto buscarProduto(String codigo) {
+        for (Produto produto : itens) {
+           
+            if (produto.getCodigo().equalsIgnoreCase(codigo)) {
+                return produto; 
+            }
+        }
+        return null;     }
 }

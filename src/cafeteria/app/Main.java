@@ -1,21 +1,19 @@
 package cafeteria.app;
 
-import cafeteria.modelo.Atendente;
-import cafeteria.modelo.Bebida;
-import cafeteria.modelo.Comida;
-import cafeteria.modelo.Produto;
-import cafeteria.modelo.ProdutoRepository;
-import cafeteria.modelo.Pedido;
-import cafeteria.modelo.ItemPedido;
-import cafeteria.modelo.Cliente;
-import cafeteria.modelo.ClienteVIP;
-import cafeteria.modelo.ClienteStandard;
+import cafeteria.modelo.*;
+import cafeteria.excecao.*;
+import cafeteria.servico.*;
+import java.util.Scanner;
 
 public class Main {
 
 	public static void main(String[] args) {
-		System.out.println("Bem-vindo ao sistema da Cafeteria Byte & Brew!");
-		
-		
+	
+            Cardapio cardapio = new Cardapio();
+                
+            Menu menuDoSistema = new Menu(cardapio);
+               
+            menuDoSistema.iniciar();
+
 	}
-	}
+}

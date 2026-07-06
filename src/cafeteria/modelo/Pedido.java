@@ -30,11 +30,18 @@ public class Pedido {
 		contadorNumPedido++;
 	}
 	
-	public void adicionarItem(Produto p){
+	public void adicionarItem(Produto p) throws EstoqueInsuficienteException {
 		adicionarItem(p, 1);
 	}
 	
-	public void adicionarItem(Produto p, int quantidade) {
+	public void adicionarItem(Produto p, int quantidade) throws EstoqueInsuficienteException {
+		if (p.getQuantidadeestoque() < quantidade) {
+	        throw new EstoqueInsuficienteException(
+	            "Não há estoque suficiente de " + p.getNome() + 
+	            ". Solicitado: " + quantidade + ", Disponível: " + p.getQuantidadeestoque()
+	        );
+	    }
+		
 		ItemPedido item = new ItemPedido(p, quantidade);
 		listaPedido.add(item);
 	}
@@ -47,7 +54,7 @@ public class Pedido {
 		return total-descontoPromocional;		
 	}
 	
-	public void finalizarPedido() throws EstoqueInsuficienteException {
+	public void finalizarPedido() {
 	    for (ItemPedido item : listaPedido) {
 	        Produto produtoDoItem = item.getProduto();
 	        int quantidadeVendida = item.getQuantidade();

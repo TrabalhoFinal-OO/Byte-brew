@@ -1,8 +1,7 @@
 package cafeteria.servico;
 
-public interface Promocional {
+import cafeteria.modelo.Pedido;
 
-	double aplicarDesconto(double totalAtual);
-		
-	
+public interface Promocional {
+    double calcularDesconto(Pedido pedido);
 }

@@ -75,10 +75,10 @@ Abaixo encontra-se o detalhamento de cada pacote implementado no sistema, isolan
 * **O que foi aplicado:** * Encapsulamento: Representa os colaboradores operacionais do sistema. Guarda de forma privada dados como nome, cpf e matrícula, atuando como o elo humano associado diretamente à abertura de novos pedidos.
 
 ### Classe ItemPedido (Associação e Agregação)
-* **O que foi aplicado:** * Agregação de Objetos: Classe intermediária crucial que une o conceito de quantidade a um objeto Produto específico. Ela encapsula o cálculo do subtotal do item multiplicando o preço base pela quantidade solicitada.
+* **O que foi aplicado:** * Classes, Objetos e Associações (Agregação). Funciona como uma classe associativa que conecta o pedido ao produto. Aplica o conceito de Agregação com a classe `Produto`, pois o produto existe de forma independente no sistema (se o item for removido do carrinho, o produto continua existindo no cardápio). Ela encapsula os atributos dinâmicos dessa união, como a quantidade e o subtotal do item.
 
 ### Classe Pedido (Encapsulamento e Composição de Estado)
-* **O que foi aplicado:** * Composição e Associação Complexa: Centraliza o fluxo de vendas do sistema contendo coleções dinâmicas de ItemPedido, além de referências diretas para o Cliente e para o Atendente responsável. Gerencia estados internos do pagamento (pagoComPix, pagoComPontos) e delega as baixas nos produtos adicionados.
+* **O que foi aplicado:** * Composição, Agregação, Modificadores de Escopo e Polimorfismo (Inclusão, Sobrecarga e Coerção). É o coração do sistema e concentra múltiplas características. Aplica Composição na relação com `ItemPedido`, pois a existência dos itens depende estritamente do ciclo de vida do pedido (se o pedido for cancelado ou excluído, seus itens deixam de existir). Aplica Agregação com a classe `Cliente`, que possui existência independente. Utiliza Modificadores de Escopo (Estático) para gerar o número sequencial automático dos pedidos e para a constante de conversão de XP. Manifesta Polimorfismo por Inclusão ao gerenciar e processar a lista de itens de forma genérica, Polimorfismo por Sobrecarga ao oferecer duas assinaturas para o método `adicionarItem` (uma padrão com 1 unidade e outra que aceita uma quantidade específica), e Polimorfismo por Coerção nas operações matemáticas de fechamento e conversões conscientes de tipos numéricos.
 
 
 ## Pacote cafeteria.servico

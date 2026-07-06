@@ -31,12 +31,12 @@ public class Pedido {
 	}
 	
 	public void adicionarItem(Produto p){
-		this.adicionarItem(p, 1);
+		adicionarItem(p, 1);
 	}
 	
 	public void adicionarItem(Produto p, int quantidade) {
 		ItemPedido item = new ItemPedido(p, quantidade);
-		this.listaPedido.add(item);
+		listaPedido.add(item);
 	}
 	
 	public double getTotal() {
@@ -44,7 +44,7 @@ public class Pedido {
 		for(ItemPedido item: listaPedido) {
 			total += item.getSubtotal();
 		}
-		return total-this.descontoPromocional;		
+		return total-descontoPromocional;		
 	}
 	
 	public void finalizarPedido() throws EstoqueInsuficienteException {
@@ -54,9 +54,9 @@ public class Pedido {
 	        produtoDoItem.baixarEstoque(quantidadeVendida);
 	    }
 	    
-	    if (this.cliente != null) {
+	    if (cliente != null) {
 	        double valorTotalDoPedido = this.getTotal();
-	        this.cliente.adicionarXP(valorTotalDoPedido); 
+	        cliente.adicionarXP(valorTotalDoPedido); 
 	    }
 	}
 	
@@ -66,7 +66,7 @@ public class Pedido {
 	}
 	
 	public void setDescontoPromocional(double desconto) {
-		this.descontoPromocional = desconto;
+		descontoPromocional = desconto;
 	}
 	
 	public void setPagoComXP(boolean pagoComXP) {

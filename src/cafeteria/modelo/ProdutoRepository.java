@@ -8,9 +8,8 @@ public class ProdutoRepository {
 	private static Map<String, Integer> estoqueProdutos = new HashMap<>();
 	private static Map<String, Produto> catalogoProdutos = new HashMap<>();
 	
-	public void salvar(Produto p, int quantidadeInicial) {
+	public void salvar(Produto p) {
 		catalogoProdutos.put(p.getCodigo(), p);
-		estoqueProdutos.put(p.getCodigo(), quantidadeInicial);
 	}
 	
 	public Produto buscarPorCodigo(String codigo) {

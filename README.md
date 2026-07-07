@@ -15,3 +15,8 @@ Este repositório contém o desenvolvimento do Trabalho Prático da disciplina *
 * **Linguagem:** Java
 * **IDE de Desenvolvimento:** Eclipse
 * **Controle de Versão:** Git & GitHub
+
+---
+
+## 📄 Relatório em PDF
+* **[Relatório do Projeto](docs/relatorio.pdf)**

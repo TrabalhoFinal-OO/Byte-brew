@@ -28,6 +28,7 @@ public class Menu {
         int opcao;
 
         do {
+
             exibirOpcoes();
             opcao = teclado.nextInt();
             teclado.nextLine();
@@ -35,6 +36,7 @@ public class Menu {
             processarOpcao(opcao);
 
         } while (opcao != 6);
+
     }
 
     private void exibirOpcoes() {
@@ -54,78 +56,35 @@ public class Menu {
 
         switch (opcao) {
 
-            case 1:
-                cardapio.mostrarCardapio();
-                break;
+        case 1:
+            cardapio.mostrarCardapio();
+            break;
 
-            case 2:
-                cadastrarCliente();
-                break;
+        case 2:
+            cadastrarCliente();
+            break;
 
-            case 3:
-                fazerPedido();
-                break;
+        case 3:
+            fazerPedido();
+            break;
 
-            case 4:
-                exibirItensDoPedido();
-                break;
+        case 4:
+            exibirItensDoPedido();
+            break;
 
-            case 5:
-                finalizarCompra();
-                break;
+        case 5:
+            finalizarCompra();
+            break;
 
-            case 6:
-                System.out.println("\nObrigado por visitar a Byte & Brew!");
-                break;
+        case 6:
+            System.out.println("\nObrigado por visitar a Byte & Brew!");
+            break;
 
-            default:
-                System.out.println("Opção inválida!");
+        default:
+            System.out.println("Opção inválida!");
         }
     }
 
-    private void fazerPedido() {
-
-        System.out.print("\nDigite o código do produto: ");
-        String codigo = teclado.nextLine();
-
-        Produto produtoEncontrado = cardapio.buscarProduto(codigo);
-
-        if (produtoEncontrado == null) {
-            System.out.println("Produto não encontrado.");
-            return;
-        }
-
-        try {
-
-            pedido.adicionarItem(produtoEncontrado);
-
-            System.out.println("✅ " + produtoEncontrado.getNome() + " adicionado ao pedido!");
-
-        } catch (EstoqueInsuficienteException e) {
-
-            System.out.println("❌ " + e.getMessage());
-
-        }
-    }
-
-    private void exibirItensDoPedido() {
-
-        if (pedido.getListaPedido().isEmpty()) {
-            System.out.println("\nSeu pedido está vazio.");
-            return;
-        }
-
-        System.out.println("\n============= PEDIDO =============");
-
-        for (ItemPedido item : pedido.getListaPedido()) {
-            System.out.printf("%s | Qtd: %d | Subtotal: R$ %.2f%n",
-                    item.getProduto().getNome(),
-                    item.getQuantidade(),
-                    item.getSubtotal());
-        }
-
-        System.out.printf("\nTOTAL: R$ %.2f%n", pedido.getTotal());
-    }
     private void cadastrarCliente() {
 
         System.out.print("\nNome do cliente: ");
@@ -151,12 +110,66 @@ public class Menu {
             return;
         }
 
-        // Cria um novo pedido para o cliente cadastrado
         pedido = new Pedido(atendenteAtual, clienteAtual);
 
         System.out.println("\nCliente cadastrado com sucesso!");
         System.out.println("Nome: " + clienteAtual.getNome());
         System.out.println("CPF: " + clienteAtual.getCpf());
+    }
+
+    private void fazerPedido() {
+
+        if (clienteAtual == null) {
+            System.out.println("Cadastre um cliente antes de fazer um pedido.");
+            return;
+        }
+
+        System.out.print("\nDigite o código do produto: ");
+        String codigo = teclado.nextLine();
+
+        Produto produto = cardapio.buscarProduto(codigo);
+
+        if (produto == null) {
+            System.out.println("Produto não encontrado.");
+            return;
+        }
+
+        System.out.print("Quantidade: ");
+        int quantidade = teclado.nextInt();
+        teclado.nextLine();
+
+        try {
+
+            pedido.adicionarItem(produto, quantidade);
+
+            System.out.println("✅ " + produto.getNome() + " adicionado ao pedido!");
+
+        } catch (EstoqueInsuficienteException e) {
+
+            System.out.println("❌ " + e.getMessage());
+
+        }
+    }
+
+    private void exibirItensDoPedido() {
+
+        if (pedido.getListaPedido().isEmpty()) {
+            System.out.println("\nSeu pedido está vazio.");
+            return;
+        }
+
+        System.out.println("\n============= PEDIDO =============");
+        System.out.println("Cliente: " + pedido.getCliente().getNome());
+
+        for (ItemPedido item : pedido.getListaPedido()) {
+
+            System.out.printf("%s | Qtd: %d | Subtotal: R$ %.2f%n",
+                    item.getProduto().getNome(),
+                    item.getQuantidade(),
+                    item.getSubtotal());
+        }
+
+        System.out.printf("\nTOTAL: R$ %.2f%n", pedido.getTotal());
     }
 
     private void finalizarCompra() {
@@ -166,12 +179,27 @@ public class Menu {
             return;
         }
 
+        if (clienteAtual instanceof ClienteVIP) {
+
+            System.out.print("Deseja pagar com XP? (S/N): ");
+            String resposta = teclado.nextLine();
+
+            if (resposta.equalsIgnoreCase("S")) {
+                pedido.setPagoComXP(true);
+            } else {
+                pedido.setPagoComXP(false);
+            }
+        }
+
         try {
 
             pedido.finalizarPedido();
 
             System.out.println("\n✅ Compra finalizada com sucesso!");
             System.out.printf("Valor total: R$ %.2f%n", pedido.getTotal());
+
+            // Novo pedido para o mesmo cliente
+            pedido = new Pedido(atendenteAtual, clienteAtual);
 
         } catch (PontosInsuficientesException e) {
 

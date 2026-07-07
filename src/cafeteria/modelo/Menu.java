@@ -1,6 +1,7 @@
 package cafeteria.modelo;
 
 import java.util.Scanner;
+import cafeteria.servico.*;
 
 import cafeteria.excecao.EstoqueInsuficienteException;
 import cafeteria.excecao.PontosInsuficientesException;
@@ -179,6 +180,18 @@ public class Menu {
             return;
         }
 
+        System.out.print("Hoje é Dia de Evento Geek? (S/N): ");
+        String respGeek = teclado.nextLine();
+
+        if (respGeek.equalsIgnoreCase("S")) {
+            
+            Promocional eventoGeek = new PromocaoEventoGeek();
+            double desconto = eventoGeek.calcularDesconto(pedido);
+            
+            pedido.setDescontoPromocional(desconto);
+            System.out.println("🎉 Promoção Evento Geek aplicada com sucesso (10% de desconto nas bebidas)!");
+        }
+
         if (clienteAtual instanceof ClienteVIP) {
 
             System.out.print("Deseja pagar com XP? (S/N): ");
@@ -196,9 +209,9 @@ public class Menu {
             pedido.finalizarPedido();
 
             System.out.println("\n✅ Compra finalizada com sucesso!");
-            System.out.printf("Valor total: R$ %.2f%n", pedido.getTotal());
+            System.out.printf("Valor total com descontos: R$ %.2f%n", pedido.getTotal());
 
-            // Novo pedido para o mesmo cliente
+            
             pedido = new Pedido(atendenteAtual, clienteAtual);
 
         } catch (PontosInsuficientesException e) {

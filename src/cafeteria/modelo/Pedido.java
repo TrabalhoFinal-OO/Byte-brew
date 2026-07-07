@@ -56,7 +56,7 @@ public class Pedido {
         return total - descontoPromocional;
     }
 
-    // Agora lança PontosInsuficientesException
+   
     public void finalizarPedido() throws PontosInsuficientesException {
 
         // Pagamento com XP
@@ -90,6 +90,10 @@ public class Pedido {
 
     public Cliente getCliente() {
         return cliente;
+    }
+    
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public List<ItemPedido> getListaPedido() {

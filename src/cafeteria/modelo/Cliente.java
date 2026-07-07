@@ -28,15 +28,18 @@ public abstract class Cliente {
 		return saldoXP;
 	}
 	
-	public void adicionarXP(double valor) {
-		if (valor > 0) {
-			saldoXP += (int) valor;
-		}
-	}		
+	public abstract void adicionarXP(double valor);
 		
+		
+	protected void adicionarAoSaldoXP(int pontos) {
+        if (pontos > 0) {
+            saldoXP += pontos;
+        }
+    }
+
     protected void descontarXP(int pontos) {
-    	if (pontos > 0 && pontos <= saldoXP) {
-    		saldoXP -= pontos;
-    	}
+        if (pontos > 0 && pontos <= saldoXP) {
+            saldoXP -= pontos;
+        }
     }
 }

@@ -1,6 +1,6 @@
 package cafeteria.modelo;
 
-public class Produto {
+public abstract class Produto {
 
 	private String codigo;
 	private String nome;
@@ -13,6 +13,9 @@ public class Produto {
 		this.precoBase = precoBase;
 		this.quantidadeEstoque = quantidadeEstoque;
 	}
+	public void setQuantidadeEstoque(int quantidadeEstoque) {
+	    this.quantidadeEstoque = quantidadeEstoque;
+	}
 	public String getCodigo() {
 		return codigo;
 	}
@@ -24,7 +27,7 @@ public class Produto {
 		return precoBase;
 	}
 	
-	public int getQuantidadeestoque() {
+	public int getQuantidadeEstoque() {
 		return quantidadeEstoque;
 	}
 	public void baixarEstoque(int quantidade) {
@@ -33,3 +36,4 @@ public class Produto {
 		}
 	}
 }
+

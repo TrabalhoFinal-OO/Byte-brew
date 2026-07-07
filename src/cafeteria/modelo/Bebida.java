@@ -1,6 +1,7 @@
 package cafeteria.modelo;
 
 public class Bebida extends Produto {
+	
 	private String tamanho;
 	private double quantidadeCafeinaMg;
 	
@@ -18,3 +19,4 @@ public class Bebida extends Produto {
 		return quantidadeCafeinaMg;
 	}
 }
+

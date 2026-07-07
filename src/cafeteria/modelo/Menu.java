@@ -59,7 +59,7 @@ public class Menu {
                 break;
 
             case 2:
-                System.out.println("Cadastro de cliente ainda não implementado.");
+                cadastrarCliente();
                 break;
 
             case 3:
@@ -125,6 +125,38 @@ public class Menu {
         }
 
         System.out.printf("\nTOTAL: R$ %.2f%n", pedido.getTotal());
+    }
+    private void cadastrarCliente() {
+
+        System.out.print("\nNome do cliente: ");
+        String nome = teclado.nextLine();
+
+        System.out.print("CPF: ");
+        String cpf = teclado.nextLine();
+
+        System.out.println("\nTipo de cliente:");
+        System.out.println("1 - Standard");
+        System.out.println("2 - VIP");
+        System.out.print("Escolha: ");
+
+        int tipo = teclado.nextInt();
+        teclado.nextLine();
+
+        if (tipo == 1) {
+            clienteAtual = new ClienteStandard(nome, cpf);
+        } else if (tipo == 2) {
+            clienteAtual = new ClienteVIP(nome, cpf);
+        } else {
+            System.out.println("Tipo inválido.");
+            return;
+        }
+
+        // Cria um novo pedido para o cliente cadastrado
+        pedido = new Pedido(atendenteAtual, clienteAtual);
+
+        System.out.println("\nCliente cadastrado com sucesso!");
+        System.out.println("Nome: " + clienteAtual.getNome());
+        System.out.println("CPF: " + clienteAtual.getCpf());
     }
 
     private void finalizarCompra() {
